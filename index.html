@@ -1,48 +1,60 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>制作中</title>
-<style>
-html,body{margin:0;height:100%;overflow:hidden;background:#040814;font-family:system-ui,sans-serif}
-body{display:flex;align-items:center;justify-content:center}
-.bg{position:fixed;inset:0;background:
-radial-gradient(circle at 20% 30%,rgba(0,255,255,.18),transparent 30%),
-radial-gradient(circle at 80% 70%,rgba(140,0,255,.2),transparent 30%),
-linear-gradient(135deg,#02040a,#091326,#02040a);
-animation:hue 12s linear infinite}
-.bg:before{content:"";position:absolute;inset:0;
-background-image:radial-gradient(#fff 1px,transparent 1px);
-background-size:40px 40px;opacity:.12}
-.card{position:relative;z-index:2;padding:50px 70px;border:1px solid rgba(255,255,255,.15);
-background:rgba(255,255,255,.06);backdrop-filter:blur(16px);
-border-radius:24px;text-align:center;box-shadow:0 0 60px rgba(0,255,255,.18)}
-h1{margin:0;font-size:min(13vw,110px);color:#fff;letter-spacing:.15em;
-text-shadow:0 0 10px #0ff,0 0 30px #0ff,0 0 60px #7f5cff;
-animation:pulse 2.6s ease-in-out infinite}
-p{color:#cfe8ff;letter-spacing:.3em}
-.bar{margin:30px auto 0;width:min(420px,80vw);height:5px;background:#223;border-radius:9px;overflow:hidden}
-.bar i{display:block;height:100%;width:35%;background:linear-gradient(90deg,#0ff,#7f5cff,#0f8);
-animation:load 2s linear infinite}
-@keyframes load{from{transform:translateX(-120%)}to{transform:translateX(320%)}}
-@keyframes pulse{50%{transform:scale(1.04)}}
-@keyframes hue{to{filter:hue-rotate(360deg)}}
-</style>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0a0a0c;
+            color: #ffffff;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            z-index: 1;
+        }
+        .status-code {
+            font-size: 8rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            background: linear-gradient(to bottom, #ffffff, #444444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.1;
+            margin: 0;
+        }
+        h1 {
+            font-size: 1.5rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin: -2rem 0 1rem 0;
+            color: #00d4ff;
+        }
+        p {
+            color: #888;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+        }
+        .line {
+            width: 50px;
+            height: 2px;
+            background: #00d4ff;
+            margin: 20px auto;
+        }
+    </style>
 </head>
-<body oncontextmenu="return false" oncopy="return false" oncut="return false" onselectstart="return false" ondragstart="return false">
-<div class="bg"></div>
-<div class="card">
-<p>COMING SOON</p>
-<h1>制作中です</h1>
-<div class="bar"><i></i></div>
-</div>
-<script>
-document.addEventListener("keydown",e=>{
- if(e.key==="F12"||(e.ctrlKey&&["u","U","s","S","c","C"].includes(e.key))||(e.ctrlKey&&e.shiftKey&&["I","i","J","j"].includes(e.key))){
-  e.preventDefault();
- }
-});
-</script>
+<body>
+    <div class="container">
+        <div class="status-code">503</div>
+        <h1>Under Construction</h1>
+        <div class="line"></div>
+        <p>現在、システムの最適化を行っております。<br>より高性能な体験をお届けするため、もう少々お待ちください。</p>
+    </div>
 </body>
 </html>
