@@ -2,194 +2,47 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>制作中</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
-
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    overflow:hidden;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#050816;
-    font-family:'Orbitron',sans-serif;
-    position:relative;
-}
-
-/* 星空 */
-body::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(circle,#ffffff 1px,transparent 1px);
-    background-size:45px 45px;
-    opacity:.15;
-    animation:stars 80s linear infinite;
-}
-
-@keyframes stars{
-    from{transform:translateY(0);}
-    to{transform:translateY(-600px);}
-}
-
-/* オーロラ */
-body::after{
-    content:"";
-    position:absolute;
-    width:160%;
-    height:160%;
-    background:
-        radial-gradient(circle,#00f7ff55 0%,transparent 50%),
-        radial-gradient(circle,#8b5cf655 0%,transparent 50%),
-        radial-gradient(circle,#00ff9955 0%,transparent 50%);
-    animation:aurora 10s ease-in-out infinite alternate;
-    filter:blur(90px);
-}
-
-@keyframes aurora{
-    from{
-        transform:rotate(0deg) scale(1);
-    }
-    to{
-        transform:rotate(30deg) scale(1.3);
-    }
-}
-
-.container{
-    position:relative;
-    z-index:5;
-    text-align:center;
-}
-
-.small{
-    color:#00eaff;
-    letter-spacing:8px;
-    font-size:20px;
-    margin-bottom:20px;
-    text-transform:uppercase;
-}
-
-h1{
-    font-size:clamp(90px,12vw,180px);
-    color:#fff;
-    text-transform:uppercase;
-    letter-spacing:12px;
-    animation:pulse 3s infinite;
-    text-shadow:
-    0 0 8px #00eaff,
-    0 0 20px #00eaff,
-    0 0 40px #00eaff,
-    0 0 80px #7c3aed,
-    0 0 150px #7c3aed;
-}
-
-@keyframes pulse{
-    0%,100%{
-        transform:scale(1);
-    }
-    50%{
-        transform:scale(1.05);
-    }
-}
-
-.line{
-    width:320px;
-    height:4px;
-    margin:45px auto;
-    background:linear-gradient(90deg,#00f7ff,#7c3aed,#00ff99);
-    background-size:300%;
-    animation:move 4s linear infinite;
-    border-radius:30px;
-    box-shadow:0 0 20px cyan;
-}
-
-@keyframes move{
-    from{
-        background-position:0%;
-    }
-    to{
-        background-position:300%;
-    }
-}
-
-p{
-    color:#d1d5db;
-    font-size:22px;
-    letter-spacing:6px;
-    animation:blink 2s infinite;
-}
-
-@keyframes blink{
-    50%{
-        opacity:.4;
-    }
-}
-
-/* 光る円 */
-.circle{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(10px);
-    animation:float 10s infinite alternate ease-in-out;
-}
-
-.c1{
-    width:250px;
-    height:250px;
-    background:#00eaff55;
-    top:8%;
-    left:8%;
-}
-
-.c2{
-    width:180px;
-    height:180px;
-    background:#7c3aed66;
-    bottom:8%;
-    right:8%;
-}
-
-.c3{
-    width:120px;
-    height:120px;
-    background:#00ff9966;
-    top:20%;
-    right:18%;
-}
-
-@keyframes float{
-    from{
-        transform:translateY(0px);
-    }
-    to{
-        transform:translateY(-60px) translateX(30px);
-    }
-}
+html,body{margin:0;height:100%;overflow:hidden;background:#040814;font-family:system-ui,sans-serif}
+body{display:flex;align-items:center;justify-content:center}
+.bg{position:fixed;inset:0;background:
+radial-gradient(circle at 20% 30%,rgba(0,255,255,.18),transparent 30%),
+radial-gradient(circle at 80% 70%,rgba(140,0,255,.2),transparent 30%),
+linear-gradient(135deg,#02040a,#091326,#02040a);
+animation:hue 12s linear infinite}
+.bg:before{content:"";position:absolute;inset:0;
+background-image:radial-gradient(#fff 1px,transparent 1px);
+background-size:40px 40px;opacity:.12}
+.card{position:relative;z-index:2;padding:50px 70px;border:1px solid rgba(255,255,255,.15);
+background:rgba(255,255,255,.06);backdrop-filter:blur(16px);
+border-radius:24px;text-align:center;box-shadow:0 0 60px rgba(0,255,255,.18)}
+h1{margin:0;font-size:min(13vw,110px);color:#fff;letter-spacing:.15em;
+text-shadow:0 0 10px #0ff,0 0 30px #0ff,0 0 60px #7f5cff;
+animation:pulse 2.6s ease-in-out infinite}
+p{color:#cfe8ff;letter-spacing:.3em}
+.bar{margin:30px auto 0;width:min(420px,80vw);height:5px;background:#223;border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;width:35%;background:linear-gradient(90deg,#0ff,#7f5cff,#0f8);
+animation:load 2s linear infinite}
+@keyframes load{from{transform:translateX(-120%)}to{transform:translateX(320%)}}
+@keyframes pulse{50%{transform:scale(1.04)}}
+@keyframes hue{to{filter:hue-rotate(360deg)}}
 </style>
 </head>
-
-<body>
-
-<div class="circle c1"></div>
-<div class="circle c2"></div>
-<div class="circle c3"></div>
-
-<div class="container">
-    <div class="small">COMING SOON</div>
-    <h1>制作中です</h1>
-    <div class="line"></div>
-    <p>PLEASE WAIT...</p>
+<body oncontextmenu="return false" oncopy="return false" oncut="return false" onselectstart="return false" ondragstart="return false">
+<div class="bg"></div>
+<div class="card">
+<p>COMING SOON</p>
+<h1>制作中です</h1>
+<div class="bar"><i></i></div>
 </div>
-
+<script>
+document.addEventListener("keydown",e=>{
+ if(e.key==="F12"||(e.ctrlKey&&["u","U","s","S","c","C"].includes(e.key))||(e.ctrlKey&&e.shiftKey&&["I","i","J","j"].includes(e.key))){
+  e.preventDefault();
+ }
+});
+</script>
 </body>
 </html>
