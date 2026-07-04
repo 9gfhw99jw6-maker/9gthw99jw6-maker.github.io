@@ -2,59 +2,101 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <title>System Maintenance</title>
     <style>
-        body {
+        /* コピー・ドラッグの完全禁止 */
+        body, html {
             margin: 0;
             padding: 0;
-            background-color: #0a0a0c;
-            color: #ffffff;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            width: 100%;
+            height: 100%;
+            background-color: #050505;
+            color: #00f2ff;
+            font-family: 'Courier New', Courier, monospace;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
             overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
         }
-        .container {
-            text-align: center;
-            z-index: 1;
+
+        /* グリッド背景 */
+        .grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(#111 1px, transparent 1px), 
+                              linear-gradient(90deg, #111 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
         }
-        .status-code {
-            font-size: 8rem;
-            font-weight: 900;
-            letter-spacing: -0.05em;
-            background: linear-gradient(to bottom, #ffffff, #444444);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            opacity: 0.1;
-            margin: 0;
-        }
-        h1 {
-            font-size: 1.5rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            margin: -2rem 0 1rem 0;
-            color: #00d4ff;
-        }
-        p {
-            color: #888;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-        }
-        .line {
-            width: 50px;
+
+        /* スキャンライン */
+        .scanline {
+            position: absolute;
+            width: 100%;
             height: 2px;
-            background: #00d4ff;
-            margin: 20px auto;
+            background: rgba(0, 242, 255, 0.1);
+            animation: scan 4s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes scan {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+
+        .content {
+            z-index: 3;
+            text-align: center;
+            padding: 40px;
+            border: 1px solid #00f2ff;
+            background: rgba(0, 20, 25, 0.8);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+        }
+
+        h1 {
+            font-size: 2rem;
+            letter-spacing: 0.5rem;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .status {
+            font-size: 0.8rem;
+            color: #fff;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="status-code">503</div>
-        <h1>Under Construction</h1>
-        <div class="line"></div>
-        <p>現在、システムの最適化を行っております。<br>より高性能な体験をお届けするため、もう少々お待ちください。</p>
+    <div class="grid"></div>
+    <div class="scanline"></div>
+
+    <div class="content">
+        <h1>System Offline</h1>
+        <div class="status">NOW BUILDING: CORE_INTERFACE_V2.0</div>
+        <p>現在、サイト構築のため一時的にアクセスを制限しています。</p>
     </div>
+
+    <script>
+        // 右クリック・ショートカットの完全防御
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if (e.ctrlKey || e.metaKey) {
+                if (['c', 'C', 'u', 'U', 'a', 'A', 's', 'S', 'i', 'I'].includes(e.key)) {
+                    e.preventDefault();
+                }
+            }
+        });
+    </script>
 </body>
 </html>
